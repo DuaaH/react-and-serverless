@@ -5,10 +5,12 @@ import HighScores from './pages/HighScores';
 import GameOver from './pages/gameOver';
 import Home from './pages/Home';
 import './App.css';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <Router >
+      <Navbar />
       <Switch>
         <Route path="/game" component={Game} />
         <Route path="/highScores" component={HighScores} />
