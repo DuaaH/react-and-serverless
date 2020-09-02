@@ -9,3 +9,7 @@ text-align:center;
 margin-bottom: 2rem;
 margin-top: 3rem;
 `
+
+export const Strong = styled.strong`
+font-weight: bold;
+`
