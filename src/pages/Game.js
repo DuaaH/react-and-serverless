@@ -4,7 +4,7 @@ import { Strong } from '../styled/Random'
 
 export default function Game({ history }) {
   const [score, setScore] = useState(0);
-  const MAX_SECONDS = 5;
+  const MAX_SECONDS = 90;
   const [ms, setMs] = useState(0);
   const [seconds, setSeconds] = useState(MAX_SECONDS);
 
@@ -20,12 +20,10 @@ export default function Game({ history }) {
     const msPassedStr = (endTime.getTime() - startTime.getTime()).toString();
     const formattedMsString = ('0000' + msPassedStr).slice(-5);
     //00000 : first 2 are the seconds, and the last 3 are the ms that have passed
-    console.log(formattedMsString);
     const updatedSeconds = MAX_SECONDS - parseInt(formattedMsString.substring(0, 2)) - 1;
     const updatedMs =
       1000 -
       parseInt(formattedMsString.substring(formattedMsString.length - 3));
-      console.log(updatedMs);
        setSeconds(addLeadingZeros(updatedSeconds, 2));
         setMs(addLeadingZeros(updatedMs, 3));
   }
@@ -43,6 +41,18 @@ export default function Game({ history }) {
       history.push('/gameOver');
     }
   }, [seconds, ms, history]);
+
+  const keyUpHandler = (e) => {
+    console.log(e.key);
+  };
+
+  useEffect(() => {
+    document.addEventListener('keyup', keyUpHandler);
+    return () => {
+      document.removeEventListener('keyup', keyUpHandler);
+    };
+  }, []);
+
 
   return (
     <StyledGame>
