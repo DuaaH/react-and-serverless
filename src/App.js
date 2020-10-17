@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Game from './pages/Game';
 import HighScores from './pages/HighScores';
-import GameOver from './pages/gameOver';
+import GameOver from './pages/GameOver';
 import Home from './pages/Home';
 import Navbar from './components/Navbar';
 import { Container } from './styled/Container';
