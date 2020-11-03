@@ -11,7 +11,8 @@ const table = base.table(TABLE);
 
 exports.handler = async (event) => {
   try {
-    const records = await table.select({}).firstPage();
+    const records = await table.select({ sort: [{ field: 'score', direction: 'desc' }],
+      filterByFormula: `AND(name != "", score > 0)`}).firstPage();
     const formattedRecords = records.map((record) => ({
       id: record.id,
       fields: record.fields,
