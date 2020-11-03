@@ -1,4 +1,4 @@
-exports.handler = async (event, context, cb) => {
+exports.handler = async (event, context) => {
   return {
     statusCode: 200,
     body: JSON.stringify({
