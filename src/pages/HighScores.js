@@ -15,7 +15,7 @@ export default function HighScores() {
         sethighScore(scores)
       }
       catch (err) {
-
+        console.log("error");
       }
     }
     loadHighScores()
