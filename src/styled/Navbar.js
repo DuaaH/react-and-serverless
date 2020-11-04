@@ -8,6 +8,7 @@ padding: 20px;
 `
 export const StyledNavBrand = styled.div`
 font-size: 1.6rem;
+text-align:left;
 & > a{
   text-decoration: none;
 } 
