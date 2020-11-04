@@ -25,7 +25,6 @@ export default function GameOver({ history }) {
           options
         );
         const data = await res.json();
-        console.log("dataa: ", data);
         if (data.id) {
           setScoreMsg('Congrats :) you got a high score ')
         }

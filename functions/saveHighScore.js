@@ -20,7 +20,6 @@ exports.handler = async (event) => {
     const records = await getHighScores(false)
 
     const lowestRecord = records[9];
-    console.log(lowestRecord, "000", records);
     if (typeof lowestRecord.fields.score === 'undefined' || score > lowestRecord.fields.score) {
       const updatedRecord = {
         id: lowestRecord.id,
