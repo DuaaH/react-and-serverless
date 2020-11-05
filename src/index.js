@@ -4,13 +4,19 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { ScoreProvider } from './contexts/ScoreContext';
+import { Auth0Provider } from '@auth0/auth0-react';
 
 ReactDOM.render(
   <React.StrictMode>
-    <ScoreProvider>
-      <App />
-    </ScoreProvider>
-    
+    <Auth0Provider
+      domain="serverless-react-dd.us.auth0.com"
+      clientId="W1UxRvG8j4iGRu44LMGHg0xgcFsG49cF"
+      redirectUri={window.location.origin}
+    >
+      <ScoreProvider>
+        <App />
+      </ScoreProvider>
+    </Auth0Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
