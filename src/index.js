@@ -5,13 +5,15 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { ScoreProvider } from './contexts/ScoreContext';
 import { Auth0Provider } from '@auth0/auth0-react';
+import config from './auth_config.json';
 
 ReactDOM.render(
   <React.StrictMode>
     <Auth0Provider
-      domain="serverless-react-dd.us.auth0.com"
-      clientId="W1UxRvG8j4iGRu44LMGHg0xgcFsG49cF"
+      domain={config.domain}
+      clientId={config.clientId}
       redirectUri={window.location.origin}
+      audience={config.audience}
     >
       <ScoreProvider>
         <App />
