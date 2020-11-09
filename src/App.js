@@ -11,10 +11,11 @@ import { GlobalStyle } from './styled/Global';
 import { useAuth0 } from "@auth0/auth0-react";
 import { ThemeProvider } from 'styled-components';
 import { DarkTheme, lightTheme } from './styled/Themes';
+import UseTheme from './hooks/UseTheme';
 
 function App() {
   const { isLoading } = useAuth0();
-  const theme = 'light';
+  const [theme, toggleTheme] = UseTheme()
   const currentTheme = theme === 'light' ? lightTheme : DarkTheme;
 
   return (
@@ -25,7 +26,7 @@ function App() {
           {isLoading && <p>Loading...</p>}
           {!isLoading && (
             <Container>
-              <Navbar />
+              <Navbar toggleTheme={toggleTheme} />
               <Switch>
                 <Route path="/game" component={Game} />
                 <Route path="/highScores" component={HighScores} />

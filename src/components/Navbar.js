@@ -5,10 +5,10 @@ import { Accent } from '../styled/Random';
 import { useAuth0 } from "@auth0/auth0-react";
 import LoginButton from './LoginButton'
 import LogoutButton from './LogoutButton'
+import useTheme from '../hooks/UseTheme'
 
 
-
-export default function Navbar() {
+export default function Navbar({ toggleTheme }) {
   const { isAuthenticated } = useAuth0()
   return (
     <StyledNavbar>
@@ -22,6 +22,9 @@ export default function Navbar() {
         <li><StyledLink to="/highScores">High Scores</StyledLink></li>
         {!isAuthenticated && <LoginButton>login</LoginButton>}
         {isAuthenticated && <LogoutButton>logout</LogoutButton>}
+        <button onClick={toggleTheme}>
+          Toggle Theme
+        </button>
       </StyledNavItems>
     </StyledNavbar>
   )
