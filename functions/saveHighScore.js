@@ -1,14 +1,17 @@
-const { getAccessTokenFromHeaders } = require('./utils/auth')
+const { getAccessTokenFromHeaders, validateAccessToken } = require('./utils/auth')
 const { table, getHighScores } = require('./utils/airtable')
 
 exports.handler = async (event) => {
   console.log("e:", event.headers);
   const token = getAccessTokenFromHeaders(event.headers)
+  const user = await validateAccessToken(token)
+
+
   console.log("tt: ", token);
-  if (!token) {// user is not authorized
+  if (!user) {// user is not authorized
     return {
-      statusCode: 401,
-      body: JSON.stringify({ err: 'user is not logged in!' }),
+      statusCode: 403,
+      body: JSON.stringify({ err: 'unauthorized' }),
     }
   }
 
@@ -18,7 +21,8 @@ exports.handler = async (event) => {
       body: JSON.stringify({ err: 'That method is not allowed' }),
     };
   }
-  const { score, name } = JSON.parse(event.body);
+  const { score } = JSON.parse(event.body);
+  const name = user['https://servelessreact/username']
   if (typeof score === 'undefined' || !name) {
     return {
       statusCode: 405,
