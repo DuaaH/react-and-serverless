@@ -20,6 +20,6 @@ export const StyledCharacter = styled.p`
     text-align: center;
     grid-row: 2;
     grid-column: 1/4;
-    color: #e16365;
+    color: var(--accent-color);
 
 `;
