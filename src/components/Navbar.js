@@ -6,6 +6,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import LoginButton from './LoginButton'
 import LogoutButton from './LogoutButton'
 import useTheme from '../hooks/UseTheme'
+import { StyledButton } from '../styled/Buttons';
 
 
 export default function Navbar({ toggleTheme }) {
@@ -20,11 +21,11 @@ export default function Navbar({ toggleTheme }) {
       <StyledNavItems>
         <li><StyledLink to="/">Home</StyledLink></li>
         <li><StyledLink to="/highScores">High Scores</StyledLink></li>
-        {!isAuthenticated && <LoginButton>login</LoginButton>}
-        {isAuthenticated && <LogoutButton>logout</LogoutButton>}
-        <button onClick={toggleTheme}>
+        {!isAuthenticated && <li><LoginButton>login</LoginButton></li>}
+        {isAuthenticated && <li><LogoutButton>logout</LogoutButton></li>}
+        <StyledButton onClick={toggleTheme}>
           Toggle Theme
-        </button>
+        </StyledButton>
       </StyledNavItems>
     </StyledNavbar>
   )
