@@ -12,6 +12,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { ThemeProvider } from 'styled-components';
 import { DarkTheme, lightTheme } from './styled/Themes';
 import UseTheme from './hooks/UseTheme';
+import PuffLoader from "react-spinners/PuffLoader";
+import Loader from './styled/Loader';
 
 function App() {
   const { isLoading } = useAuth0();
@@ -23,7 +25,7 @@ function App() {
       <ThemeProvider theme={currentTheme}>
         <GlobalStyle />
         <Main>
-          {isLoading && <p>Loading...</p>}
+          {isLoading && <Loader><PuffLoader size={150} color= {'#e16365'}/> </Loader>}
           {!isLoading && (
             <Container>
               <Navbar toggleTheme={toggleTheme} />
